@@ -20,27 +20,27 @@ The computation is run in C++ for speed. First the reinforcement learning model 
 
 Neuroimage2009_v47_p1929.pdf -> the original Neuroimage article.
 
-### Source files (in ReinforcementLearning.cpp)
+### Source files (in ReinforcementLearning)
 
 optimAKEI2pM38.cpp -> estimate parameters with threshold accepting, run on each subject
 optimAKEI2pM38f.cpp -> estimate parameters with threshold accepting, faster, run on each simulated set
 simulAKEI2pM38.cpp -> simulate decisions for a fixed set of parameters
 infoAKEI2pM38.cpp -> report the values calculated by the model after each decision.
  
-### Bash scripts (in ReinforcementLearning.cpp)
+### Bash scripts (in ReinforcementLearning)
 
 ./compile.sh -> compile programs
 ./runOptimization.sh -> run the optimization on all subjects
 ./runInformation.sh -> calculate the information for all subjects
 ./runBootstrap.sh -> simulate decisions and re-estimate parameters
 
-### Data dir
+### Data files (in ReinforcementLearning/Data)
 
 PunishAkEi.txt -> punishement associated to each card in the 4 decks
 RewardAkEi.txt -> reward associated to each card in the 4 decks
 RecFuscIgtAkEi -> decision made by 10 subjects (8 are selected for the study)
 
-### Result dir
+### Results  (in ReinforcementLearning/Result)
 
 Sol* -> parameters estimated for each subject (learning rate, risk preference, MLL) for each restart (result of runOptimization.sh)
 Sol*Min -> parameters estimated for each subject (learning rate, risk preference, MLL), best solution (result of runOptimization.sh)
