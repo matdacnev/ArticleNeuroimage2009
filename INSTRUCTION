@@ -1,0 +1,17 @@
+INSTRUCTION
+Mathieu d'Acremont
+mathieu.dacremont@gmail.com
+
+The Gnu Scientific Library is needed. Tested on Linux Ubuntu 14.10.
+
+In the ReinfocementLearning dir, type the following command in a linux bash terminal:
+
+./compile.sh
+./runOptimization.sh
+./runInformation.sh
+./runBootstrap.sh
+
+runBootstrap.sh takes time to complete. Uncomment lines in the file to run the bootstrap on all subjects.
+
+
+

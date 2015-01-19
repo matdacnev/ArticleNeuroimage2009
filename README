@@ -1,0 +1,56 @@
+README
+Mathieu d'Acremont
+mathieu.dacremont@gmail.com
+
+## Summary
+
+Run the optimization and simulation described in the article:
+
+d'Acremont, M., Lu, Z. L., Li, X., Van der Linden, M., & Bechara, A. (2009). Neural correlates of risk prediction error during reinforcement learning in humans. Neuroimage, 47(4), 1929-1939.
+
+A copy of the article can be found on this github repository: Neuroimage2009_v47_p1929.pdf
+
+The optimization and simulation are presented in the section "Reinforcement learning algorithm" of the Neuroimage article (pp. 1932-1933). I tested a reinforcement learning model with 2 free parameters: a learning rate and a risk preference. The model is fitted on the decisions of 10 subjects who completed 4 versions of the Iowa Gambling Task (see article for references). The 4 versions are known as the ABCD, KLMN, EFGH, and IJOP. Each subject made 100 decisions in each version of the task (400 decisions total per subject). Only 8 subjects were retained in the final study due to a bug in the task that affected 2 sessions.
+
+The computation is run in C++ for speed. First the reinforcement learning model is fitted to the data using an optimization heuristic (threshold accepting). The result of the optimization gives 2 parameters for each subject (learning rate and risk preference). Then to estimate the Maximum Likelihood distribution, decisions are simulated and the parameters are re-estimated on the simulated data.
+
+## File description
+
+### PDF file
+
+Neuroimage2009_v47_p1929.pdf -> the original Neuroimage article.
+
+### Source files (in ReinforcementLearning.cpp)
+
+optimAKEI2pM38.cpp -> estimate parameters with threshold accepting, run on each subject
+optimAKEI2pM38f.cpp -> estimate parameters with threshold accepting, faster, run on each simulated set
+simulAKEI2pM38.cpp -> simulate decisions for a fixed set of parameters
+infoAKEI2pM38.cpp -> report the values calculated by the model after each decision.
+ 
+### Bash scripts (in ReinforcementLearning.cpp)
+
+./compile.sh -> compile programs
+./runOptimization.sh -> run the optimization on all subjects
+./runInformation.sh -> calculate the information for all subjects
+./runBootstrap.sh -> simulate decisions and re-estimate parameters
+
+### Data dir
+
+PunishAkEi.txt -> punishement associated to each card in the 4 decks
+RewardAkEi.txt -> reward associated to each card in the 4 decks
+RecFuscIgtAkEi -> decision made by 10 subjects (8 are selected for the study)
+
+### Result dir
+
+Sol* -> parameters estimated for each subject (learning rate, risk preference, MLL) for each restart (result of runOptimization.sh)
+Sol*Min -> parameters estimated for each subject (learning rate, risk preference, MLL), best solution (result of runOptimization.sh)
+Info* -> values calculated by the model after each decision, for each subject (result of runInformation.sh)
+Sim* -> 1000 decisions simulated for each subject  (result of runBootstrap.sh)
+Boot*Min -> parameter estimates for each of the 1000 simulations  (result of runBootstrap.sh)
+
+
+
+
+
+
+
